@@ -5,6 +5,10 @@ pipeline {
         jdk "JDK17"
     }
 
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage('Fetch code') {
             steps{
@@ -80,7 +84,7 @@ pipeline {
                     artifacts: [
                         [artifactId: 'app-artifact', 
                         classifier: '',
-                        file: 'target/phonebook-0.0.1-SNAPSHOT',
+                        file: 'target/phonebook-0.0.1-SNAPSHOT.jar',
                         type: 'jar']
                     ]
                 )
